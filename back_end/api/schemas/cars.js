@@ -20,6 +20,10 @@ const carsSchema = new mongoose.Schema({
   series: {
     type: String,
     required: true
+  },
+  color: {
+    type: Object,
+    required: true
   }
 });
 

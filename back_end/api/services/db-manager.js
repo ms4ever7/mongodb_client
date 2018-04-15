@@ -10,9 +10,16 @@ module.exports = sqlQuery => {
       const { projections, collectionName, limit, sort, skip, condition } = parsedSQL;
       const projectionsObject = {};
 
-      projections.forEach(projection => projectionsObject[projection] = 1);
-      projectionsObject._id = 0;
-      projectionsObject.__v = 0;
+      projections.forEach(projection => {
+        const appropriateProjection = projection.replace('*', '');
+
+        return projectionsObject[appropriateProjection] = 1
+      });
+
+
+      if (!Object.keys(projectionsObject).length) {
+        projectionsObject.__v = 0;
+      }
 
       const db = await MongoClient.connect(url);
 
@@ -21,12 +28,16 @@ module.exports = sqlQuery => {
         .sort(sort)
         .limit(limit)
         .skip(skip)
-        .toArray((err, result) => {
+        .toArray((err, results) => {
           if (err) {
             return reject(err);
           }
 
-          resolve(result);        
+          if (!results.length || !Object.keys(results[0]).length) {
+            return reject('No results found');
+          }
+
+          return resolve(results);
         })
     } catch (err) {
       reject(err);
