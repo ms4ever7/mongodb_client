@@ -1,5 +1,3 @@
-const sqlToMongo = require('../helpers/sql-to-mongo');
-
 const COLUMNS_INDEX = 5;
 const ASC_INDEX = 1;
 const DESC_INDEX = -1;
@@ -28,14 +26,14 @@ const order = args => {
         } else if (argArray[1].toLowerCase() === 'desc') {
           appropriateArgs[argArray[0]] = DESC_INDEX;
         } else {
-          reject('If you are using order by function for each argument then is should look like: country DESC');
+          reject('If you are using order by function for each argument with sorting, then is should look like: country DESC');
         }
 
       } else {
         reject('If you are using order by function, there should be 1 or 2 arguments for each filter');
       }
     })
-
+  
     resolve(appropriateArgs);
   });
 }

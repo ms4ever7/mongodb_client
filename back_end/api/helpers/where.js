@@ -1,5 +1,4 @@
-var SqlWhereParser = require('sql-where-parser');
-const sqlToMongo = require('../helpers/sql-to-mongo');
+const SqlWhereParser = require('sql-where-parser');
 
 const CONDITIONS_INDEX = 5;
 const OPERATORS = new Map([

@@ -1,7 +1,9 @@
 const { MongoClient } = require('mongodb');
 
+const { db } = require('../config');
+const url = `mongodb://${db.host}/${db.name}`;
+
 const sqlToMongo = require('../helpers/sql-to-mongo');
-const url = 'mongodb://localhost/mongodb_client';
 
 module.exports = sqlQuery => {
   return new Promise(async (resolve, reject) => {
@@ -20,6 +22,8 @@ module.exports = sqlQuery => {
       if (!Object.keys(projectionsObject).length) {
         projectionsObject.__v = 0;
       }
+
+      projectionsObject._id = 0;
 
       const db = await MongoClient.connect(url);
 
