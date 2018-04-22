@@ -4,7 +4,8 @@
   "description": "Simple alternative mongodb client.",
   "main": "api/app.js",
   "scripts": {
-    "test": "mocha __tests__/*.spec.js"
+    "test": "mocha __tests__/*.spec.js",
+    "start": "node app"
   },
   "author": "Roman Blyztsiv",
   "license": "ISC",

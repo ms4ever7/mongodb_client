@@ -1,6 +1,6 @@
 const SqlWhereParser = require('sql-where-parser');
 
-const CONDITIONS_INDEX = 5;
+const { OPTIONAL_CONDITION_INDEX } = require('../constants');
 const OPERATORS = new Map([
   ['=', '$eq'],
   ['>', '$gt'],
@@ -34,21 +34,19 @@ const parse = (data) => {
   }
 }
 
-const where = args => {
-  return new Promise((resolve, reject) => {
-    if (!args[CONDITIONS_INDEX]) {
-      reject('Condition is required when using WHERE');
-    }
+const parseWhereConditionToMongo = args => {
+  if (!args[OPTIONAL_CONDITION_INDEX]) {
+    throw 'Condition is required when using WHERE';
+  }
 
-    const optionalArgs = args.splice(CONDITIONS_INDEX).join(' ');
+  const optionalArgs = args.splice(OPTIONAL_CONDITION_INDEX).join(' ');
 
-    const parser = new SqlWhereParser();
-    const parsedData = parser.parse(optionalArgs);
+  const parser = new SqlWhereParser();
+  const parsedData = parser.parse(optionalArgs);
 
-    const appropriateResult = parse(parsedData);
+  const appropriateResult = parse(parsedData);
 
-    resolve(appropriateResult);
-  });
+  return appropriateResult;
 }
 
-module.exports = where;
+module.exports = parseWhereConditionToMongo;

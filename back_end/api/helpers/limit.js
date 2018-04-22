@@ -1,13 +1,11 @@
-const LIMIT_NUMBER_INDEX = 5;
+const { OPTIONAL_CONDITION_INDEX } = require('../constants');
 
-const limit = args => {
-  return new Promise((resolve, reject) => {
-    if (!Number(args[LIMIT_NUMBER_INDEX])) {
-      reject('LIMIT parameter should be a number and its required');
-    }
+const limitConditionToMongo = (args) => {
+  if (!Number(args[OPTIONAL_CONDITION_INDEX])) {
+    throw 'LIMIT parameter should be a number and its required';
+  }
 
-    resolve(args[LIMIT_NUMBER_INDEX]);
-  });
+  return args[OPTIONAL_CONDITION_INDEX];
 }
 
-module.exports = limit;
+module.exports = limitConditionToMongo;

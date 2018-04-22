@@ -1,13 +1,12 @@
 const NUMBER_TO_SKIP_INDEX = 5;
+const { OPTIONAL_CONDITION_INDEX } = require('../constants');
 
-const skip = args => {
-  return new Promise((resolve, reject) => {
-    if (!Number(args[NUMBER_TO_SKIP_INDEX])) {
-      reject('Skip parameter should be a number and its required');
-    }
+const skipConditionToMongo = (args) => {
+  if (!Number(args[OPTIONAL_CONDITION_INDEX])) {
+    throw 'Skip parameter should be a number and its required';
+  }
 
-    resolve(args[NUMBER_TO_SKIP_INDEX]);
-  });
+  return args[OPTIONAL_CONDITION_INDEX];
 }
 
-module.exports = skip;
+module.exports = skipConditionToMongo;

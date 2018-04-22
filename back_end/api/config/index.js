@@ -1,6 +1,6 @@
 module.exports = {
   db: {
-    host: 'localhost',
+    host: 'mongo',
     name: 'mongodb_client'
   }
 };

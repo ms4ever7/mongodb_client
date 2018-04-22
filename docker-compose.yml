@@ -1,0 +1,25 @@
+version: '3.5'
+services:
+  back:
+    container_name: mongodb_back
+    build: './back_end'
+    ports:
+      - '8000:8000'
+    links:
+      - mongo
+    depends_on:
+      - mongo
+  mongo:
+    image: 'mongo:latest'
+    ports:
+      - '27017:27017'
+  mongo-seed:
+    build: ./mongo-seed
+    links:
+      - mongo
+  front:
+    container_name: mongodb_front
+    build: './front_end'
+    ports:
+      - '3000:3000'
+  

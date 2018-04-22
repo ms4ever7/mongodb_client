@@ -3,12 +3,12 @@ import CollectionHeader from '../../components/collection-header';
 import { shallow } from 'enzyme';
 
 it('should render collection header', () => {
-  const tree = shallow(<CollectionHeader collection={['']}/>);
-  const expectedTitle = 'Welcome to simple MongoDB client.';
+  const expectedObject = { name: 'audi', country: 'germany' };
+  const tree = shallow(<CollectionHeader collection={expectedObject}/>);
 
-  expect(tree.find('.App__header').length).toEqual(1);
-  expect(tree.find('.App__header-wrapper').length).toEqual(1);
-  expect(tree.find('.App__logo').length).toEqual(1);
-  expect(tree.find('.App__title').length).toEqual(1);
-  expect(tree.find('.App__title').text()).toEqual(expectedTitle);
+  const collectionWrapper = tree.find('.App__collection-header-item');
+
+  expect(tree.find('.App__collection-header').length).toEqual(1);
+  expect(tree.find('.App__collection-header-item').length).toEqual(2);
+  expect(collectionWrapper.getElements()).toHaveLength(2);
 });
