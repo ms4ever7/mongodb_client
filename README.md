@@ -6,7 +6,7 @@ To start working with this app u need:
 
  - after docker has successfully been installed go to app folder and run `docker-compose up --build` 
 
- - go to http://localhost:3000 and try the app
+ - go to http://localhost:3000 and try the app (input is already with value for u to just click on the button)
 
  - there is a car collection u can fetch data from and it's properties:
    * name `string`
