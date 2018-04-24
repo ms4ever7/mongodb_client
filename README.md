@@ -2,16 +2,16 @@ Welcome to simple mongodb client.
 
 To start working with this app u need: 
 
- - install docker(if u don't have it on your OS), here is the link https://docs.docker.com/install/
+ - Install docker(if u don't have it on your OS), here is the link https://docs.docker.com/install/
 
- - after docker has successfully been installed go to app folder and run 
+ - After docker has successfully been installed run docker app. After this, go to app folder and run:
    * `docker`
    * `docker -v`
    * `docker-compose up --build` 
 
- - go to http://localhost:3000 and try the app (input is already with value for u to just click on the button)
+ - Go to http://localhost:3000 and try the app (input is already with value for u to just click on the button)
 
- - there is a car collection u can fetch data from and it's properties:
+ - There is a car collection u can fetch data from and it's properties:
    * name `string`
    * founder `string`
    * country `string`
@@ -19,7 +19,7 @@ To start working with this app u need:
    * series `string`
    * color `object with boolean properties: black, blue, red`
 
- - here is commands that are available to get data: 
+ - Here is commands that are available to get data: 
    * select with projections and subprojections;
    * and conditions like (order by, where, skip, limit)
 
