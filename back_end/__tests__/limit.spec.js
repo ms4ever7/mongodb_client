@@ -4,15 +4,15 @@ const chaiAsPromised = require('chai-as-promised');
 
 const expect = chai.expect;
 
-chai.use(chaiAsPromised);
-
 describe('Limit', () => {
   it('Failed to get optional parameters when using limit function', () => {
     const errorMessage = 'LIMIT parameter should be a number and its required';
 
-    const result = limit([ 'SELECT', '*', 'FROM', 'cars', 'LIMIT' ]);
-
-    return expect(result).to.be.rejectedWith(errorMessage);
+    try {
+      limit([ 'SELECT', '*', 'FROM', 'cars', 'LIMIT' ]);
+    } catch (error) {
+      return expect(error).to.be.equal(errorMessage);
+    }
   });
 
   it('Success get optional parameters when using limit function', () => {
@@ -20,6 +20,6 @@ describe('Limit', () => {
 
     const result = limit([ 'SELECT', '*', 'FROM', 'cars', 'LIMIT', '10' ]);
 
-    return result.then(data => expect(data).to.equal(expectedResult));
+    return expect(result).to.equal(expectedResult);
   })
 })

@@ -15,14 +15,14 @@ const OPERATORS = new Map([
 
 const parse = (data) => {
   const parsedDataKey = Object.keys(data)[0];
+  let appropriateResult = {};
+
   if (parsedDataKey === 'AND' || parsedDataKey === 'OR') {
-    const appropriateResult = {};
     const appropriateOperator = OPERATORS.get(parsedDataKey);
 
     appropriateResult[appropriateOperator] = data[parsedDataKey].map(obj => parse(obj));
     return appropriateResult;
   } else {
-    const appropriateResult = {};
     const conditionData = Object.entries(data)[0];
     const operator = conditionData[0];
     const field = conditionData[1][0];

@@ -1,4 +1,3 @@
-const NUMBER_TO_SKIP_INDEX = 5;
 const { OPTIONAL_CONDITION_INDEX } = require('../constants');
 
 const skipConditionToMongo = (args) => {

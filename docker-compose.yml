@@ -1,16 +1,20 @@
 version: '3.5'
+
 services:
   back:
     container_name: mongodb_back
     build: './back_end'
     ports:
       - '8000:8000'
+    environment:
+      - MONGO_URI=mongodb://mongo:27018/mongodb_client
     links:
       - mongo
     depends_on:
       - mongo
   mongo:
     image: 'mongo:latest'
+    command: mongod --port 27017
     ports:
       - '27017:27017'
   mongo-seed:
@@ -22,4 +26,3 @@ services:
     build: './front_end'
     ports:
       - '3000:3000'
-  

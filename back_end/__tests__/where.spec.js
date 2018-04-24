@@ -4,15 +4,16 @@ const chaiAsPromised = require('chai-as-promised');
 
 const expect = chai.expect;
 
-chai.use(chaiAsPromised);
-
 describe('Where', () => {
   it('Failed to get condition parameters when using where function', () => {
     const errorMessage = 'Condition is required when using WHERE';
 
-    const result = where([ 'SELECT', '*', 'FROM', 'cars', 'WHERE' ]);
+    try {
+      where([ 'SELECT', '*', 'FROM', 'cars', 'WHERE' ]);      
+    } catch (error) {
+      return expect(error).to.be.equal(errorMessage);
+    }
 
-    return expect(result).to.be.rejectedWith(errorMessage);
   });
 
   it('Success get optional parameters when using where function', () => {
@@ -20,6 +21,6 @@ describe('Where', () => {
 
     const result = where([ 'SELECT', '*', 'FROM', 'cars', 'WHERE', 'name', '=', 'Audi' ]);
 
-    return result.then(data => expect(data).to.deep.equal(expectedResult));
+    return expect(result).to.deep.equal(expectedResult);
   })
 })

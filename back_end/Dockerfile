@@ -12,5 +12,7 @@ ENV PATH /usr/src/back_end/node_modules/.bin:$PATH
 COPY . /usr/src/back_end/
 RUN npm install --silent
 
-CMD ["npm", "start"]
+RUN curl https://raw.githubusercontent.com/vishnubob/wait-for-it/master/wait-for-it.sh -O && chmod +x wait-for-it.sh
+
+CMD ["./wait-for-it.sh", "mongo:27017", "--", "npm", "start"]
 EXPOSE 8000

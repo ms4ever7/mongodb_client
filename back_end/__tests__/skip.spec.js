@@ -4,15 +4,15 @@ const chaiAsPromised = require('chai-as-promised');
 
 const expect = chai.expect;
 
-chai.use(chaiAsPromised);
-
 describe('Skip', () => {
   it('Failed to get optional parameters when using skip function', () => {
     const errorMessage = 'Skip parameter should be a number and its required';
 
-    const result = skip([ 'SELECT', '*', 'FROM', 'cars', 'SKIP' ]);
-
-    return expect(result).to.be.rejectedWith(errorMessage);
+    try {
+      skip([ 'SELECT', '*', 'FROM', 'cars', 'SKIP' ]);
+    } catch (error) {
+      return expect(error).to.be.equal(errorMessage);
+    }
   });
 
   it('Success get optional parameters when using skip function', () => {
@@ -20,6 +20,6 @@ describe('Skip', () => {
 
     const result = skip([ 'SELECT', '*', 'FROM', 'cars', 'SKIP', '10' ]);
 
-    return result.then(data => expect(data).to.equal(expectedResult));
+    return expect(result).to.equal(expectedResult);
   })
 })

@@ -30,4 +30,4 @@
   { "name": "Volvo", "founder": "Gustav Larson", "country": "Sweden", "year": 2006, "series": "S80", "color": { "black": true, "blue": false, "red": false } },
   { "name": "Volvo", "founder": "Gustav Larson", "country": "Sweden", "year": 2007, "series": "V70", "color": { "black": true, "blue": true, "red": false } },
   { "name": "Volvo", "founder": "Gustav Larson", "country": "Sweden", "year": 2010, "series": "S60", "color": { "black": false, "blue": true, "red": true } }
-  ]
+]

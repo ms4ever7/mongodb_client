@@ -14,7 +14,7 @@ module.exports = sqlQuery => {
   
       projections.forEach(projection => {
         const appropriateProjection = projection.replace('*', '');
-  
+        
         return projectionsObject[appropriateProjection] = 1
       });
   
