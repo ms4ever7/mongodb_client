@@ -23,5 +23,5 @@ To start working with this app u need:
 
 To connect to mongo db go to folder app and run commands:
  1) `docker-compose exec mongo bash`
- 2) attach to db `mongo`
- 3) use db `use mongodb_client`
+ 2) attach to db:  `mongo`
+ 3) use db: `use mongodb_client`
