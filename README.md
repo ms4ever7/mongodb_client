@@ -4,7 +4,10 @@ To start working with this app u need:
 
  - install docker(if u don't have it on your OS), here is the link https://docs.docker.com/install/
 
- - after docker has successfully been installed go to app folder and run `docker-compose up --build` 
+ - after docker has successfully been installed go to app folder and run 
+   * `docker`
+   * `docker -v`
+   * `docker-compose up --build` 
 
  - go to http://localhost:3000 and try the app (input is already with value for u to just click on the button)
 
