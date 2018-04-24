@@ -17,8 +17,8 @@ To start working with this app u need:
    * color(object with boolean properties: black, blue, red)
 
  - here is commands that are available to get data: 
-   * select with projections and subprojections
-     * and conditions like (order by, where, skip, limit)
+   * select with projections and subprojections;
+   * and conditions like (order by, where, skip, limit)
 
 
 To connect to mongo db go to folder app and run commands:
